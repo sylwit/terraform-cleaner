@@ -1,7 +1,7 @@
 XC_OS="linux darwin"
 XC_ARCH="amd64 arm64"
 XC_PARALLEL="2"
-BIN="bin"
+BIN="dist"
 SRC=$(shell find . -name "*.go")
 
 ifeq (, $(shell which gox))
@@ -25,6 +25,8 @@ build: install_deps
 fmt:
 	$(info ******************** checking formatting ********************)
 	@test -z $(shell gofmt -l $(SRC)) || (gofmt -d $(SRC); exit 1)
+	terraform fmt -recursive
+
 
 test: install_deps
 	$(info ******************** running tests ********************)

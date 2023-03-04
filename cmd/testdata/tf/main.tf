@@ -1,14 +1,14 @@
 terraform {
   required_providers {
     null = {
-      source = "hashicorp/null"
+      source  = "hashicorp/null"
       version = "3.2.1"
     }
   }
 }
 
 provider "null" {
-  region     = var.region
+  region = var.region
 }
 
 data "null_data_source" "values" {

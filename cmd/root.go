@@ -12,7 +12,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "terraform-cleaner",
+	Use:   "terraform-cleaner <path>",
 	Short: "Remove unused variables",
 	RunE:  rootCmdExec,
 }

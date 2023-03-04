@@ -1,5 +1,4 @@
 # Binaries for programs and plugins
-bin
 *.exe
 *.exe~
 *.dll
@@ -14,3 +13,5 @@ bin
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+dist/

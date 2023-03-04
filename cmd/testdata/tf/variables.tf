@@ -1,15 +1,15 @@
 variable "name" {
-  type = string
+  type    = string
   default = "terraform-cleaner"
 }
 
 variable "region" {
-  type = string
+  type    = string
   default = "ca-central-1"
 }
 
 variable "instance_ids" {
-  type = list(string)
+  type    = list(string)
   default = ["i-123", "i-456"]
 }
 
