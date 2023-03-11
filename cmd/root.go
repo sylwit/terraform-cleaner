@@ -31,23 +31,42 @@ func rootCmdExec(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	for path, _ := range modules {
+	for path := range modules {
 		stats, err := findVariablesUsage(path)
 		if err != nil {
 			return err
 		}
-		fmt.Printf("Module: %s (%d variables found)\n", path, len(stats.variables))
 
-		for name, count := range stats.variables {
-			if fUnusedOnly && count > 0 {
+		if fUnusedOnly {
+			for name, count := range stats.variables {
+				if count > 0 {
+					delete(stats.variables, name)
+				}
+			}
+			if len(stats.variables) == 0 {
 				continue
 			}
-			fmt.Printf("%s : %d\n", name, count)
 		}
-		fmt.Println("")
+
+		err = displayModule(path, &stats)
+		if err != nil {
+			return err
+		}
+
 	}
 
 	fmt.Printf("%d modules processed", len(modules))
+
+	return nil
+}
+
+func displayModule(path string, stats *VariablesUsage) error {
+	fmt.Printf("Module: %s (%d variables found)\n", path, len(stats.variables))
+
+	for name, count := range stats.variables {
+		fmt.Printf("%s : %d\n", name, count)
+	}
+	fmt.Println("")
 
 	return nil
 }
@@ -91,7 +110,7 @@ func countVariables(path string, tfconfig *tfconfig.Module) (map[string]int, err
 
 			content := string(data)
 
-			for variable, _ := range tfconfig.Variables {
+			for variable := range tfconfig.Variables {
 				regex := regexp.MustCompile(fmt.Sprintf(`var\.%s\W`, variable))
 				matches := regex.FindAllStringIndex(content, -1)
 
