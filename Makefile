@@ -1,5 +1,7 @@
-XC_OS="linux darwin"
-XC_ARCH="amd64 arm64"
+XC_OS="darwin"
+#XC_OS="linux darwin"
+XC_ARCH="arm64"
+#XC_ARCH="amd64 arm64"
 XC_PARALLEL="2"
 BIN="dist"
 SRC=$(shell find . -name "*.go")
