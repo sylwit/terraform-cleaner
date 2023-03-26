@@ -4,6 +4,14 @@
 
 Tiny utility which detects unused variables in your terraform modules
 
+[![asciicast](https://asciinema.org/a/vwSJkNc9SSQ75uSMH6W1ffbmm.svg)](https://asciinema.org/a/vwSJkNc9SSQ75uSMH6W1ffbmm)
+
+
+# How to use it ?
+
+Simply download the binary for your platform from the [releases page](https://github.com/sylwit/terraform-cleaner/releases/)
+
+
 # Pre-commit
 
 ```shell
