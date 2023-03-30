@@ -57,6 +57,6 @@ func Execute() error {
 
 func init() {
 	rootCmd.Flags().Bool("unused-only", false, "Display only unused values")
-	rootCmd.Flags().Bool("variables", false, "Display only unused variables")
-	rootCmd.Flags().Bool("locals", false, "Display only unused locals")
+	rootCmd.Flags().Bool("variables", false, "Display only variables")
+	rootCmd.Flags().Bool("locals", false, "Display only locals")
 }
